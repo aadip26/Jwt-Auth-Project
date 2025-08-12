@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> authentication </title>
+</head>
+<body>
+    
+    <form id="signinForm">
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Sign In</button>
+      </form>
+      <script>
+      document.getElementById('signinForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const res = await fetch('/api/auth/signin', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                  email: e.target.email.value,
+                  password: e.target.password.value
+              })
+          });
+          const data = await res.json();
+          console.log(data);
+      });
+      </script>
+      
+
+</body>
+</html>
