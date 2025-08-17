@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv"
-dotenv.config();
 
 export default function auth(req, res, next) {
-    const token = req.header("Authorization")?.replace("Bearer ", "");
+    // Get token from header OR cookie
+    const token = req.header("Authorization")?.replace("Bearer ", "") || req.cookies?.token;
+
     if (!token) return res.status(401).json({ error: "No token provided" });
 
     try {
