@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["npx", "nodemon", "src/index.js"]
+CMD ["npm", "node", "src/index.js"]
